@@ -1,13 +1,8 @@
 package com.robusta.pdc;
 
-import com.robusta.pdc.scanner.NonRecursiveSourceFolderPackageCallback;
-import com.robusta.pdc.scanner.SourceFolderPackageCallback;
-
 import java.io.File;
-import java.util.List;
 
 import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * @author sudhir.ravindramohan
@@ -22,21 +17,14 @@ public class SourceFolder {
         checkState(sourceFolder.canRead(), "The source folder: '%s' is not accessible", sourceFolderAsString);
     }
 
-    public void findPackages(PackageNames packageNames, SourceFolderPackageCallback callback) {
-
-        for (String packageName : packageNames) {
-            String packagePath = sourceFolder.getAbsolutePath() + File.separatorChar + packageName.replace('.', File.separatorChar);
-            File packageDirectory = new File(packagePath);
-            if(packageDirectory.exists()) {
-                callback.doWithSourceFolderPackage(this, packageDirectory);
-            }
-        }
+    @Override
+    public String toString() {
+        return "SourceFolder{" +
+                "sourceFolder=" + sourceFolder +
+                '}';
     }
 
-    public Iterable<SourceFolderPackage> matchingPackages(PackageNames packageNames) {
-        final List<SourceFolderPackage> sourceFolderPackages = newArrayList();
-        findPackages(packageNames, new NonRecursiveSourceFolderPackageCallback(sourceFolderPackages));
-        return sourceFolderPackages;
+    public String getAbsolutePath() {
+        return sourceFolder.getAbsolutePath();
     }
-
 }

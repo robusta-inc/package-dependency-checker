@@ -29,4 +29,12 @@ public class SourceFolderPackage {
         }
         return sourceFiles;
     }
+
+    @Override
+    public String toString() {
+        return "SourceFolderPackage{" +
+                "sourceFolder=" + sourceFolder +
+                ", packageDirectory=" + packageDirectory +
+                '}';
+    }
 }

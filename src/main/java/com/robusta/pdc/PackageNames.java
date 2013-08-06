@@ -38,4 +38,9 @@ public class PackageNames implements Iterable<String> {
     public Iterator<String> iterator() {
         return packagesInDotNotationList.iterator();
     }
+
+    @Override
+    public String toString() {
+        return "PackageNames={" + packagesInDotNotationList + '}';
+    }
 }
