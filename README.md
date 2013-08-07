@@ -19,6 +19,21 @@ Usage
 java –jar dependencyChecker.jar -dir /path/to/java/source -source com.foo.bar.impl -target java.util,javax.servlet.*
 ```
 
+Sample Output
+=============
+```
+1. com.robusta.pdc.scanner.RecursivePackageFinder.java depends on java.util
+2. com.robusta.pdc.scanner.RecursivePackageFinder.java depends on java.io
+3. com.robusta.pdc.scanner.AbstractDirectoryFindingPackageFinder.java depends on com.google.common.collect
+4. com.robusta.pdc.scanner.AbstractDirectoryFindingPackageFinder.java depends on java.util
+5. com.robusta.pdc.scanner.AbstractDirectoryFindingPackageFinder.java depends on java.io
+6. com.robusta.pdc.scanner.PackageFinder.java depends on java.util
+7. com.robusta.pdc.scanner.PackageCallbackSourceFolderScanner.java depends on java.util
+8. com.robusta.pdc.scanner.NonRecursivePackageFinder.java depends on java.util
+9. com.robusta.pdc.scanner.NonRecursivePackageFinder.java depends on java.io
+10. com.robusta.pdc.scanner.QDocSourceFileScanner.java depends on java.io
+```
+
 Assumptions
 ===========
 * package names are assumed to be as per convention - http://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html 
