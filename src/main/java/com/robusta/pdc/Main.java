@@ -1,6 +1,5 @@
 package com.robusta.pdc;
 
-import com.robusta.pdc.command.line.CommandLineParser;
 import com.robusta.pdc.command.line.ParseCommandLineArgumentHasFailed;
 import com.robusta.pdc.command.line.UserHasAskedForHelp;
 import com.robusta.pdc.domain.CommandLineArguments;
@@ -47,15 +46,4 @@ public class Main {
         }
     }
 
-    private static class LoggingInterceptor {
-        public void interceptAndSetup(String[] args) {
-            boolean isVerbose = false;
-            for (String arg : args) {
-                if(CommandLineParser.OPTION_HYPHEN_VERBOSE.equals(arg)) {
-                    isVerbose = true;
-                }
-            }
-            System.setProperty("log.level", isVerbose ? "DEBUG": "INFO");
-        }
-    }
 }
