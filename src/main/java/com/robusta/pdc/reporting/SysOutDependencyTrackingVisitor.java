@@ -15,7 +15,7 @@ public class SysOutDependencyTrackingVisitor implements ImportTracking.Visitor {
 
     @Override
     public void visit(SourceFile sourceFile, JavaPackage javaPackage) {
-        System.out.println(String.format("%d.%s depends on %s",
+        System.out.println(String.format("%d. %s depends on %s",
                 counter.getAndIncrement(),
                 sourceFile.javaFileNameInDotNotation(),
                 javaPackage.packageInDotNotation()));
