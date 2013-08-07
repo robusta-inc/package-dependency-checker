@@ -51,7 +51,7 @@ Extensions
 ==========
 * Using appropriate implementation of scanners and callbacks, a wide variety of source folder scanning, source file scanning and source file content scanning can be schieved.
 * Reporting formats can be customized to log to a file, push formatted xml to a web service etc.
-* 
+
 Possible Improvements
 =====================
 * Dependecy scanning can be made asynchronous so that more than 1 source file can be concurrently scanned. 
