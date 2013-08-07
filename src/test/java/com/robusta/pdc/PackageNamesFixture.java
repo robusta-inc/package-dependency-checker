@@ -23,7 +23,7 @@ public abstract class PackageNamesFixture {
     public static final SourceFile CLASS_C = new SourceFile(SOURCE_FOLDER, COM_DOT_FOO_DOT_BAR, new File(DIRECTORY_NAME_JOINER.join(COM_DOT_FOO_DOT_BAR_PATH, "ClassC.java")));
     public static final SourceFile CLASS_D = new SourceFile(SOURCE_FOLDER, COM_DOT_FOO_DOT_BAR, new File(DIRECTORY_NAME_JOINER.join(COM_DOT_FOO_DOT_BAR_PATH, "ClassD.java")));
     private static String pathToTestSourceFolder() {
-        String absolutePath = new File(DIRECTORY_NAME_JOINER.join("src", "test", "resources", "var", "app", "code")).getAbsolutePath();
+        String absolutePath = new File(DIRECTORY_NAME_JOINER.join("src", "test", "samples")).getAbsolutePath();
         LoggerFactory.getLogger(PackageNamesFixture.class).trace("absolutePath = " + absolutePath);
         return absolutePath;
     }
