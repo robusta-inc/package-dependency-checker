@@ -12,6 +12,10 @@ import org.slf4j.LoggerFactory;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ * Import statement tracking that collects java packages aggregated
+ * on the source file.
+ */
 class DependencyTracker implements ImportTracking {
     private final Multimap<SourceFile, JavaPackage> sourceFileHasPackageDependenciesTracker;
 

@@ -11,7 +11,8 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 public class PackageNames implements Iterable<String> {
     private final Iterable<String> packagesInDotNotationList;
 
-    static final Pattern JAVA_PACKAGE_NAME_PATTERN = Pattern.compile("^([a-zA-Z_][a-zA-Z0-9_]*(\\.[a-zA-Z_][a-zA-Z0-9_]*)*)?$"); //http://stackoverflow.com/questions/3577250/python-regex-for-java-package-names
+    //http://stackoverflow.com/questions/3577250/python-regex-for-java-package-names (adopted)
+    static final Pattern JAVA_PACKAGE_NAME_PATTERN = Pattern.compile("^([a-zA-Z_][a-zA-Z0-9_]*(\\.[a-zA-Z_][a-zA-Z0-9_]*)*)?$");
     static final Splitter SPLIT_BY_COMMA_WITH_TRIM = Splitter.on(",").omitEmptyStrings().trimResults();
 
     public PackageNames(String commaSeparatedPackagesList) {

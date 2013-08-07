@@ -41,6 +41,12 @@ public class SourceFile {
         return sourceFile;
     }
 
+    /**
+     * Computes the FQDN class name in dot notation with a .java
+     * suffix
+     *
+     * @return String java file name e.g. com.foo.bar.ClassA.java
+     */
     public String javaFileNameInDotNotation() {
         String filePath = sourceFile.getAbsolutePath();
         String sourceFolderPath = sourceFolder.getAbsolutePath();
@@ -49,6 +55,11 @@ public class SourceFile {
                 .replace(File.separatorChar, '.')
                 .replaceFirst("^\\.", "");
     }
+    /**
+     * Computes the package name in dot notation
+     *
+     * @return String package name e.g. com.foo.bar
+     */
 
     public String packageNameInDotNotation() {
         return javaFileNameInDotNotation().replaceAll("\\.[_A-Za-z]*\\.java", "");
