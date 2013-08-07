@@ -1,3 +1,5 @@
+A package dependency checker - command line tool built on an extensible approach
+
 Package Dependency Checker
 ==========================
 
@@ -30,4 +32,10 @@ Continuously Integrated
 =======================
 https://robusta.ci.cloudbees.com/job/build-package-dependency-checker
 
+License
+=======
+Apache 2.0
+
+<img style="width: 178px; height: 61px;" src="https://www.cloudbees.com/sites/default/files/Button-Built-on-CB-1.png" alt="">
+<img style="width: 178px; height: 61px;" src="https://www.cloudbees.com/sites/default/files/Button-Powered-by-CB.png" alt="">
 
