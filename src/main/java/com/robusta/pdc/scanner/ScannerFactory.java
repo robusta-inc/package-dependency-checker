@@ -11,8 +11,9 @@ public abstract class ScannerFactory {
     /**
      * Import statement tracking source folder scanner
      *
-     * @param tracking
-     * @return
+     * @param tracking ImportTracking specifies what the scanner needs
+     *                 to do when it scans an import statement.
+     * @return SourceFolderScanner
      */
     public static SourceFolderScanner importStatementScanner(ImportTracking tracking) {
         checkArgument(tracking != null, "Factory cannot produce a import statement scanner with a valid tracking option");
