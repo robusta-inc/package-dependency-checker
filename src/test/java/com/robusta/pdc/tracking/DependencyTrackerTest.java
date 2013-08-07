@@ -1,5 +1,6 @@
-package com.robusta.pdc.domain;
+package com.robusta.pdc.tracking;
 
+import com.robusta.pdc.domain.ImportStatement;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,14 +1,18 @@
-package com.robusta.pdc.domain;
+package com.robusta.pdc.tracking;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.robusta.pdc.domain.ImportStatement;
+import com.robusta.pdc.domain.ImportTracking;
+import com.robusta.pdc.domain.JavaPackage;
+import com.robusta.pdc.domain.SourceFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.Map;
 
-public class DependencyTracker {
+public class DependencyTracker implements ImportTracking {
     private final Multimap<SourceFile, JavaPackage> sourceFileHasPackageDependenciesTracker;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -16,6 +20,7 @@ public class DependencyTracker {
         this.sourceFileHasPackageDependenciesTracker = HashMultimap.create(); // Possibly needs to be sync when multi threaded.
     }
 
+    @Override
     public void track(ImportStatement importStatement) {
         logger.debug("Tracker asked to track import statement: '{}'", importStatement);
         SourceFile sourceFile = importStatement.sourceFile();
@@ -34,7 +39,16 @@ public class DependencyTracker {
         }
     }
 
-    public Map<SourceFile, Collection<JavaPackage>> tracked() {
+    protected Map<SourceFile, Collection<JavaPackage>> tracked() {
         return sourceFileHasPackageDependenciesTracker.asMap();
+    }
+
+    @Override
+    public void doWithVisitation(Visitor visitor) {
+        for (SourceFile sourceFile : sourceFileHasPackageDependenciesTracker.keySet()) {
+            for (JavaPackage aPackage : sourceFileHasPackageDependenciesTracker.get(sourceFile)) {
+                visitor.visit(sourceFile, aPackage);
+            }
+        }
     }
 }

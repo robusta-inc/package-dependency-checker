@@ -1,16 +1,16 @@
 package com.robusta.pdc.scanner;
 
 import com.robusta.pdc.domain.AllowedPackages;
-import com.robusta.pdc.domain.DependencyTracker;
+import com.robusta.pdc.domain.ImportTracking;
 
-public abstract class SourceFolderScannerFactory {
-    public static SourceFolderScanner newScannerFor(AllowedPackages allowedPackages, DependencyTracker dependencyTracker) {
+public abstract class ScannerFactory {
+    public static SourceFolderScanner newScannerFor(AllowedPackages allowedPackages, ImportTracking tracking) {
         return sourceFolderScanner(
                 packageFinder(),
                 packageCallback(
                         sourceFileScanner(
                                 statementCallback(allowedPackages,
-                                        dependencyTracker))));
+                                        tracking))));
     }
 
     private static PackageCallbackSourceFolderScanner sourceFolderScanner(NonRecursivePackageFinder packageFinder, SourceFileScanningPackageCallback packageCallback) {
@@ -33,11 +33,7 @@ public abstract class SourceFolderScannerFactory {
         return new QDocSourceFileScanner(callback);
     }
 
-    private static DependencyTrackingImportStatementCallback statementCallback(AllowedPackages allowedPackages, DependencyTracker dependencyTracker) {
+    private static DependencyTrackingImportStatementCallback statementCallback(AllowedPackages allowedPackages, ImportTracking dependencyTracker) {
         return new DependencyTrackingImportStatementCallback(dependencyTracker, allowedPackages);
-    }
-
-    public static DependencyTracker newDependencyTracker() {
-        return new DependencyTracker();
     }
 }

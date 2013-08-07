@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-public abstract class AbstractDirectoryFindingPackageFinder implements PackageFinder {
+abstract class AbstractDirectoryFindingPackageFinder implements PackageFinder {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override

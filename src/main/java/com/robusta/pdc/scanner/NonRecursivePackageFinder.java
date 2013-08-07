@@ -6,7 +6,7 @@ import com.robusta.pdc.domain.SourceFolderPackage;
 import java.io.File;
 import java.util.List;
 
-public class NonRecursivePackageFinder extends AbstractDirectoryFindingPackageFinder {
+class NonRecursivePackageFinder extends AbstractDirectoryFindingPackageFinder {
 
     @Override
     protected void processFoundPackageDirectory(List<SourceFolderPackage> packages, SourceFolder sourceFolder, File packageDirectory) {

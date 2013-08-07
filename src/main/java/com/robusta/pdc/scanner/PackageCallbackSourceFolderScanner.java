@@ -12,7 +12,7 @@ import java.util.Collection;
 /**
  * @author sudhir.ravindramohan
  */
-public class PackageCallbackSourceFolderScanner implements SourceFolderScanner {
+class PackageCallbackSourceFolderScanner implements SourceFolderScanner {
     private final PackageFinder packageFinder;
     private final PackageCallback packageCallback;
 
