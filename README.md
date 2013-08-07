@@ -18,5 +18,16 @@ java –jar dependencyChecker.jar -dir /path/to/java/source -source com.foo.bar.
 ```
 
 Assumptions
+===========
 * package names are assumed to be as per convention - http://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html 
 * Class names and method names (static imports) are assumed to be as per conventions - http://docs.oracle.com/javase/tutorial/java/javaOO/classdecl.html
+
+Artifact
+========
+Download [dependencyChecker.jar](https://robusta.ci.cloudbees.com/job/build-package-dependency-checker/lastSuccessfulBuild/artifact/target/dependencyChecker.jar)
+
+Continuously Integrated
+=======================
+https://robusta.ci.cloudbees.com/job/build-package-dependency-checker
+
+
