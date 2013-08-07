@@ -10,3 +10,13 @@ Specification
 <li>source packages (e.g. com.foo.bar) (single or comma separated)</li>
 <li>target packages (single or comma separated) that source package(s) is “expected” to contain natural dependency on (e.g.., org.*, java.*, com.foo.buzz.* </li>
 </ol>
+
+Usage
+=====
+```
+java –jar dependencyChecker.jar -dir /path/to/java/source -source com.foo.bar.impl -target java.util,javax.servlet.*
+```
+
+Assumptions
+1. package names are assumed to be as per convention - http://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html 
+2. Class names and method names (static imports) are assumed to be as per conventions - http://docs.oracle.com/javase/tutorial/java/javaOO/classdecl.html
