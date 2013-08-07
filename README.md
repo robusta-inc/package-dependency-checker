@@ -54,7 +54,7 @@ Extensions
 
 Possible Improvements
 =====================
-* Dependecy scanning can be made asynchronous so that more than 1 source file can be concurrently scanned. 
+* Dependency scanning can be made asynchronous so that more than 1 source file can be concurrently scanned.
 * QDocSourceFileScanner used JavaDocBuilder from qdox which consumes the compete source file content. For import statement processing this could be an over kill esp for hugh java files. An alternate implementation that stop after import statements would be more ideal.
 
 License
@@ -63,4 +63,3 @@ Apache 2.0
 
 <img style="width: 178px; height: 61px;" src="https://www.cloudbees.com/sites/default/files/Button-Built-on-CB-1.png" alt="">
 <img style="width: 178px; height: 61px;" src="https://www.cloudbees.com/sites/default/files/Button-Powered-by-CB.png" alt="">
-

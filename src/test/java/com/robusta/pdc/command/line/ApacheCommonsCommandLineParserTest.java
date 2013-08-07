@@ -54,4 +54,20 @@ public class ApacheCommonsCommandLineParserTest {
         verify(helper).printHelp(any(Options.class));
         verify(errorReporter).reportError(any(Exception.class));
     }
+
+    @Test(expected = ParseCommandLineArgumentHasFailed.class)
+    public void testParseCommandLine_whenTargetOptionAreMissing() throws Exception {
+        CommandLineArguments arguments = parser.parseCommandLine(new String[]{"-source", "com.xyz.services.impl", "-dir", "/var/test/foo"});
+        assertNotNull(arguments);
+        verify(helper).printHelp(any(Options.class));
+        verify(errorReporter).reportError(any(Exception.class));
+    }
+
+    @Test(expected = ParseCommandLineArgumentHasFailed.class)
+    public void testParseCommandLine_whenPackageIsIncorrect() throws Exception {
+        CommandLineArguments arguments = parser.parseCommandLine(new String[]{"-dir", "c:/my/java/source", "-source", "com.^^^xyz.services.impl", "-target", "com.xyz.services,com.xyz.persistence"});
+        assertNotNull(arguments);
+        verify(helper).printHelp(any(Options.class));
+        verify(errorReporter).reportError(any(IllegalArgumentException.class));
+    }
 }

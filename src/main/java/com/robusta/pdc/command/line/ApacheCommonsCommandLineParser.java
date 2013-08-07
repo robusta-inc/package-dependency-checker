@@ -55,12 +55,9 @@ class ApacheCommonsCommandLineParser implements CommandLineParser {
                 printHelp();
                 throw new UserHasAskedForHelp();
             }
-            String sourceDirectories = cmd.getOptionValue(OPTION_SOURCE_DIRECTORIES);
-            checkArgument(sourceDirectories, "specify source directories with -dir option");
-            String sourcePackages = cmd.getOptionValue(OPTION_SOURCE_PACKAGES);
-            checkArgument(sourceDirectories, "specify source packages with -source option");
-            String targetPackages = cmd.getOptionValue(OPTION_TARGET_PACKAGES);
-            checkArgument(sourceDirectories, "specify target packages with -target option");
+            String sourceDirectories = check(cmd.getOptionValue(OPTION_SOURCE_DIRECTORIES), "specify source directories with -dir option");
+            String sourcePackages = check(cmd.getOptionValue(OPTION_SOURCE_PACKAGES), "specify source packages with -source option");
+            String targetPackages = check(cmd.getOptionValue(OPTION_TARGET_PACKAGES), "specify target packages with -target option");
             return new CommandLineArguments(
                     new SourceFolders(sourceDirectories),
                     new PackageNames(sourcePackages),
@@ -68,14 +65,18 @@ class ApacheCommonsCommandLineParser implements CommandLineParser {
         } catch (ParseException e) {
             errorReporter.reportError(e);
             printHelp();
+        } catch (IllegalArgumentException e) {
+            errorReporter.reportError(e);
+            printHelp();
         }
         throw new ParseCommandLineArgumentHasFailed();
     }
 
-    private void checkArgument(String value, String errorToBeRaised) throws MissingOptionException {
+    private String check(String value, String errorToBeRaised) throws MissingOptionException {
         if(isNullOrEmpty(value)) {
             throw new MissingOptionException(errorToBeRaised);
         }
+        return value;
     }
 
     private void printHelp() {
