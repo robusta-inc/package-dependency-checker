@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.List;
 
-public class RecursivePackageFinder extends AbstractDirectoryFindingPackageFinder {
+class RecursivePackageFinder extends AbstractDirectoryFindingPackageFinder {
     public static final FileFilter DIRECTORY_FILTER = new FileFilter() {
         @Override
         public boolean accept(File pathName) {
