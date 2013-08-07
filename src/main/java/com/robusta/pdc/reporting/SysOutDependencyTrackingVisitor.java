@@ -6,7 +6,7 @@ import com.robusta.pdc.domain.SourceFile;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class SysOutDependencyTrackingVisitor implements ImportTracking.Visitor {
+class SysOutDependencyTrackingVisitor implements ImportTracking.Visitor {
     private final AtomicInteger counter;
 
     public SysOutDependencyTrackingVisitor() {

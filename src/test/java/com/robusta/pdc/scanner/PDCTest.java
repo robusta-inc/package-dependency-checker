@@ -1,7 +1,7 @@
 package com.robusta.pdc.scanner;
 
 import com.robusta.pdc.domain.AllowedPackages;
-import com.robusta.pdc.reporting.SysOutDependencyTrackingVisitor;
+import com.robusta.pdc.reporting.ReportingFactory;
 import com.robusta.pdc.tracking.DependencyTracker;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +22,6 @@ public class PDCTest {
     @Test
     public void testScan() throws Exception {
         scanner.scan(SOURCE_FOLDERS, VALID_VALUES);
-        tracker.doWithVisitation(new SysOutDependencyTrackingVisitor());
+        tracker.doWithVisitation(ReportingFactory.trackingVisitor());
     }
 }
