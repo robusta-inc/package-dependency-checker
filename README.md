@@ -43,9 +43,11 @@ Artifact
 ========
 Download [dependencyChecker.jar](https://robusta.ci.cloudbees.com/job/build-package-dependency-checker/lastSuccessfulBuild/artifact/target/dependencyChecker.jar)
 
-Continuously Integrated
+Development notes
 =======================
-https://robusta.ci.cloudbees.com/job/build-package-dependency-checker
+* CI - https://robusta.ci.cloudbees.com/job/build-package-dependency-checker
+* TDD - https://robusta.ci.cloudbees.com/job/build-package-dependency-checker/lastBuild/testReport/
+* Javadoc - https://robusta.ci.cloudbees.com/job/build-package-dependency-checker/javadoc
 
 License
 =======
