@@ -22,6 +22,6 @@ public class PDCTest {
     @Test
     public void testScan() throws Exception {
         scanner.scan(SOURCE_FOLDERS, VALID_VALUES);
-        tracker.doWithVisitation(ReportingFactory.trackingVisitor());
+        tracker.doWithVisitor(ReportingFactory.trackingVisitor());
     }
 }

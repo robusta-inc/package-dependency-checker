@@ -60,8 +60,16 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.1</version>
                 <configuration>
+                    <filters>
+                    <filter>
+                        <artifact>log4j:log4j</artifact>
+                        <includes>
+                            <include>**</include>
+                        </includes>
+                    </filter>
+                    </filters>
                     <minimizeJar>true</minimizeJar>
-                    <finalName>dependencyChecker.jar</finalName>
+                    <finalName>dependencyChecker</finalName>
                     <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                             <mainClass>com.robusta.pdc.Main</mainClass>

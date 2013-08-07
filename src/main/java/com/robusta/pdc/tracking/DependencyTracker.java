@@ -44,7 +44,7 @@ public class DependencyTracker implements ImportTracking {
     }
 
     @Override
-    public void doWithVisitation(Visitor visitor) {
+    public void doWithVisitor(Visitor visitor) {
         for (SourceFile sourceFile : sourceFileHasPackageDependenciesTracker.keySet()) {
             for (JavaPackage aPackage : sourceFileHasPackageDependenciesTracker.get(sourceFile)) {
                 visitor.visit(sourceFile, aPackage);

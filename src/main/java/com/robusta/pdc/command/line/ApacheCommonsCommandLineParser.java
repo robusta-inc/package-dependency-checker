@@ -1,11 +1,9 @@
 package com.robusta.pdc.command.line;
 
 import com.robusta.pdc.domain.*;
-import org.apache.commons.cli.BasicParser;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.apache.commons.cli.OptionBuilder.withArgName;
 
 @SuppressWarnings("AccessStaticViaInstance")
@@ -24,10 +22,10 @@ class ApacheCommonsCommandLineParser implements CommandLineParser {
         this.errorReporter = errorReporter;
         options = new Options()
                 .addOption(
-                withArgName(OPTION_SOURCE_DIRECTORIES)
-                        .hasArg()
-                        .withDescription("comma separated list of source directories")
-                        .create(OPTION_SOURCE_DIRECTORIES))
+                        withArgName(OPTION_SOURCE_DIRECTORIES)
+                                .hasArg()
+                                .withDescription("comma separated list of source directories")
+                                .create(OPTION_SOURCE_DIRECTORIES))
                 .addOption(withArgName(OPTION_SOURCE_PACKAGES)
                         .hasArg()
                         .withDescription("comma separated list of source packages")
@@ -53,18 +51,27 @@ class ApacheCommonsCommandLineParser implements CommandLineParser {
                 printHelp();
                 throw new UserHasAskedForHelp();
             }
+            String sourceDirectories = cmd.getOptionValue(OPTION_SOURCE_DIRECTORIES);
+            checkArgument(sourceDirectories, "specify source directories with -dir option");
+            String sourcePackages = cmd.getOptionValue(OPTION_SOURCE_PACKAGES);
+            checkArgument(sourceDirectories, "specify source packages with -source option");
+            String targetPackages = cmd.getOptionValue(OPTION_TARGET_PACKAGES);
+            checkArgument(sourceDirectories, "specify target packages with -target option");
             return new CommandLineArguments(
-                    new SourceFolders(cmd.getOptionValue(OPTION_SOURCE_DIRECTORIES)),
-                    new PackageNames(cmd.getOptionValue(OPTION_SOURCE_PACKAGES)),
-                    new AllowedPackages(cmd.getOptionValue(OPTION_TARGET_PACKAGES)));
+                    new SourceFolders(sourceDirectories),
+                    new PackageNames(sourcePackages),
+                    new AllowedPackages(targetPackages), cmd.hasOption(OPTION_VERBOSE));
         } catch (ParseException e) {
-            errorReporter.reportError(e);
-            printHelp();
-        } catch (IllegalArgumentException e) {
             errorReporter.reportError(e);
             printHelp();
         }
         throw new ParseCommandLineArgumentHasFailed();
+    }
+
+    private void checkArgument(String value, String errorToBeRaised) throws MissingOptionException {
+        if(isNullOrEmpty(value)) {
+            throw new MissingOptionException(errorToBeRaised);
+        }
     }
 
     private void printHelp() {

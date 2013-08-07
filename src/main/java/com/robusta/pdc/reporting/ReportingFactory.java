@@ -9,6 +9,6 @@ public abstract class ReportingFactory {
     }
 
     public static ImportTracking.Visitor trackingVisitor() {
-        return new SysOutDependencyTrackingVisitor();
+        return new SysOutDependencyTrackingReporter();
     }
 }
