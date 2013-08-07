@@ -65,4 +65,17 @@ public class JavaPackageTest {
         when(importStatement.statement()).thenReturn("javax.xml.XMLConstants.DEFAULT_NS_PREFIX");
         assertThat(new JavaPackage(importStatement).packageInDotNotation(), equalTo("javax.xml"));
     }
+
+    @Test
+    public void testPackageInDotNotation_withNumbers() throws Exception {
+        when(importStatement.statement()).thenReturn("javax1.xml2.XMLConstants.DEFAULT_NS_PREFIX");
+        assertThat(new JavaPackage(importStatement).packageInDotNotation(), equalTo("javax1.xml2"));
+    }
+
+    @Test
+    public void testPackageInDotNotation_withTrailing_() throws Exception {
+        when(importStatement.statement()).thenReturn("javax_._xml_.XMLConstants.DEFAULT_NS_PREFIX");
+        assertThat(new JavaPackage(importStatement).packageInDotNotation(), equalTo("javax_._xml_"));
+    }
+
 }

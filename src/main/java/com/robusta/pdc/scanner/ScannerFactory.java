@@ -1,39 +1,59 @@
 package com.robusta.pdc.scanner;
 
-import com.robusta.pdc.domain.AllowedPackages;
 import com.robusta.pdc.domain.ImportTracking;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
+/**
+ * A factory for scanners and callbacks.
+ */
 public abstract class ScannerFactory {
-    public static SourceFolderScanner newScannerFor(AllowedPackages allowedPackages, ImportTracking tracking) {
+    /**
+     * Import statement tracking source folder scanner
+     *
+     * @param tracking
+     * @return
+     */
+    public static SourceFolderScanner importStatementScanner(ImportTracking tracking) {
+        checkArgument(tracking != null, "Factory cannot produce a import statement scanner with a valid tracking option");
         return sourceFolderScanner(
                 packageFinder(),
-                packageCallback(
+                sourceFileScanningPackageCallback(
                         sourceFileScanner(
-                                statementCallback(allowedPackages,
+                                dependencyTrackingStatementCallback(
                                         tracking))));
     }
 
-    private static PackageCallbackSourceFolderScanner sourceFolderScanner(NonRecursivePackageFinder packageFinder, SourceFileScanningPackageCallback packageCallback) {
-        return new PackageCallbackSourceFolderScanner(
-                packageFinder,
-                packageCallback);
+    /**
+     * General purpose source folder scanner using a package finder
+     * and a package callback
+     *
+     * @param packageFinder PackageFinder
+     * @param packageCallback PackageCallback
+     * @return SourceFolderScanner
+     */
+    public static SourceFolderScanner sourceFolderScanner(PackageFinder packageFinder, PackageCallback packageCallback) {
+        return new PackageCallbackSourceFolderScanner(packageFinder, packageCallback);
     }
 
-    private static NonRecursivePackageFinder packageFinder() {
+    /**
+     * Non recursive package finder
+     *
+     * @return PackageFinder
+     */
+    public static PackageFinder packageFinder() {
         return new NonRecursivePackageFinder();
     }
 
-    private static SourceFileScanningPackageCallback packageCallback(QDocSourceFileScanner sourceFileScanner) {
-        return new SourceFileScanningPackageCallback(
-                sourceFileScanner
-        );
+    public static PackageCallback sourceFileScanningPackageCallback(SourceFileScanner sourceFileScanner) {
+        return new SourceFileScanningPackageCallback(sourceFileScanner);
     }
 
-    private static QDocSourceFileScanner sourceFileScanner(DependencyTrackingImportStatementCallback callback) {
+    public static SourceFileScanner sourceFileScanner(ImportStatementCallback callback) {
         return new QDocSourceFileScanner(callback);
     }
 
-    private static DependencyTrackingImportStatementCallback statementCallback(AllowedPackages allowedPackages, ImportTracking dependencyTracker) {
-        return new DependencyTrackingImportStatementCallback(dependencyTracker, allowedPackages);
+    public static ImportStatementCallback dependencyTrackingStatementCallback(ImportTracking dependencyTracker) {
+        return new DependencyTrackingImportStatementCallback(dependencyTracker);
     }
 }

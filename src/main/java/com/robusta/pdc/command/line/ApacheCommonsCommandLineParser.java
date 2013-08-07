@@ -6,13 +6,16 @@ import org.apache.commons.cli.*;
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.apache.commons.cli.OptionBuilder.withArgName;
 
+/**
+ * {@link org.apache.commons.cli.CommandLineParser} based
+ * {@link CommandLineParser} implementation.
+ *
+ * <p>Delegates help content reporting to an injected
+ * {@link HelpReporter} and error reporting to an
+ * injected {@link ErrorReporter}</p>
+ */
 @SuppressWarnings("AccessStaticViaInstance")
 class ApacheCommonsCommandLineParser implements CommandLineParser {
-    public static final String OPTION_SOURCE_DIRECTORIES = "dir";
-    public static final String OPTION_SOURCE_PACKAGES = "source";
-    public static final String OPTION_TARGET_PACKAGES = "target";
-    public static final String OPTION_HELP = "help";
-    public static final String OPTION_VERBOSE = "verbose";
     private final Options options;
     private final ErrorReporter errorReporter;
     private final HelpReporter helper;
@@ -42,6 +45,7 @@ class ApacheCommonsCommandLineParser implements CommandLineParser {
                         .create(OPTION_HELP));
 
     }
+
     @Override
     public CommandLineArguments parseCommandLine(String[] arguments) throws UserHasAskedForHelp, ParseCommandLineArgumentHasFailed {
         BasicParser parser = new BasicParser();

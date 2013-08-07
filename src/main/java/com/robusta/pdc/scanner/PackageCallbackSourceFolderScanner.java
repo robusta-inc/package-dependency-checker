@@ -10,6 +10,11 @@ import org.slf4j.LoggerFactory;
 import java.util.Collection;
 
 /**
+ * A {@link SourceFolderScanner} implementation that accepts a
+ * uses a {@link PackageFinder} to detect packages in each
+ * {@link SourceFolder} and invokes the {@link PackageCallback}
+ * for every found package.
+ *
  * @author sudhir.ravindramohan
  */
 class PackageCallbackSourceFolderScanner implements SourceFolderScanner {

@@ -37,4 +37,10 @@ public class SourceFileTest {
     public void testJavaFileNameInDotNotation_sanity() throws Exception {
         assertThat(PackageNamesFixture.CLASS_A.javaFileNameInDotNotation(), equalTo("_com._foo._bar.ClassA.java"));
     }
+
+    @Test
+    public void testPackageNameInDotNotation_sanity() throws Exception {
+        assertThat(PackageNamesFixture.CLASS_A.packageNameInDotNotation(), equalTo("_com._foo._bar"));
+    }
+
 }

@@ -49,4 +49,8 @@ public class SourceFile {
                 .replace(File.separatorChar, '.')
                 .replaceFirst("^\\.", "");
     }
+
+    public String packageNameInDotNotation() {
+        return javaFileNameInDotNotation().replaceAll("\\.[_A-Za-z]*\\.java", "");
+    }
 }

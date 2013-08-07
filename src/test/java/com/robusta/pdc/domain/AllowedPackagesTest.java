@@ -52,7 +52,7 @@ public class AllowedPackagesTest {
 
     @Test
     public void testIsAllowed_whenMatchesSubPackageWithStar_shouldReturnTrue() throws Exception {
-        when(javaPackage.packageInDotNotation()).thenReturn("com.test.bazz.impl");
+        when(javaPackage.packageInDotNotation()).thenReturn("com.test.bazz.something.impl");
         assertThat(allowedPackages.isAllowed(javaPackage), equalTo(true));
     }
 

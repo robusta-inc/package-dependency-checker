@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Collection;
 import java.util.Map;
 
-public class DependencyTracker implements ImportTracking {
+class DependencyTracker implements ImportTracking {
     private final Multimap<SourceFile, JavaPackage> sourceFileHasPackageDependenciesTracker;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -44,7 +44,7 @@ public class DependencyTracker implements ImportTracking {
     }
 
     @Override
-    public void doWithVisitor(Visitor visitor) {
+    public void allowVisitor(Visitor visitor) {
         for (SourceFile sourceFile : sourceFileHasPackageDependenciesTracker.keySet()) {
             for (JavaPackage aPackage : sourceFileHasPackageDependenciesTracker.get(sourceFile)) {
                 visitor.visit(sourceFile, aPackage);

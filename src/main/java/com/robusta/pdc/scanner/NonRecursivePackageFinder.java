@@ -6,6 +6,11 @@ import com.robusta.pdc.domain.SourceFolderPackage;
 import java.io.File;
 import java.util.List;
 
+/**
+ * {@link PackageFinder} implementation that finds the packages
+ * in a given source folder and package path, but does not recurse
+ * further into the package path subdirectories.
+ */
 class NonRecursivePackageFinder extends AbstractDirectoryFindingPackageFinder {
 
     @Override
