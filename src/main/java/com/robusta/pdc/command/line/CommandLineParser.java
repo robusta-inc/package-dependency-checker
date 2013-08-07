@@ -8,6 +8,7 @@ public interface CommandLineParser {
     public static final String OPTION_TARGET_PACKAGES = "target";
     public static final String OPTION_HELP = "help";
     public static final String OPTION_VERBOSE = "verbose";
+    public static final String OPTION_HYPHEN_VERBOSE = "-verbose";
 
     /**
      * Parse the command line arguments supplied and build

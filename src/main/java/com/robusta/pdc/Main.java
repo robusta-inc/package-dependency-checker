@@ -51,7 +51,7 @@ public class Main {
         public void interceptAndSetup(String[] args) {
             boolean isVerbose = false;
             for (String arg : args) {
-                if(CommandLineParser.OPTION_VERBOSE.equals(arg)) {
+                if(CommandLineParser.OPTION_HYPHEN_VERBOSE.equals(arg)) {
                     isVerbose = true;
                 }
             }
