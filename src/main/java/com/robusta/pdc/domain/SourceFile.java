@@ -16,8 +16,7 @@ public class SourceFile {
     @Override
     public String toString() {
         return "SourceFile{" +
-                "sourceFolderPackage=" + sourceFolderPackage +
-                ", sourceFile=" + sourceFile +
+                "sourceFile=" + sourceFile +
                 '}';
     }
 
