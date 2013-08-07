@@ -1,7 +1,7 @@
 package com.robusta.pdc.scanner;
 
-import com.robusta.pdc.SourceFile;
-import com.robusta.pdc.SourceFolderPackage;
+import com.robusta.pdc.domain.SourceFile;
+import com.robusta.pdc.domain.SourceFolderPackage;
 
 public class SourceFileScanningPackageCallback implements PackageCallback {
     private final SourceFileScanner sourceFileScanner;

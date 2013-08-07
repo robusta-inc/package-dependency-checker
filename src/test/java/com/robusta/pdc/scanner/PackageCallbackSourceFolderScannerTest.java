@@ -1,10 +1,10 @@
 package com.robusta.pdc.scanner;
 
 import com.google.common.collect.Lists;
-import com.robusta.pdc.PackageNames;
-import com.robusta.pdc.SourceFolder;
-import com.robusta.pdc.SourceFolderPackage;
-import com.robusta.pdc.SourceFolders;
+import com.robusta.pdc.domain.PackageNames;
+import com.robusta.pdc.domain.SourceFolder;
+import com.robusta.pdc.domain.SourceFolderPackage;
+import com.robusta.pdc.domain.SourceFolders;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

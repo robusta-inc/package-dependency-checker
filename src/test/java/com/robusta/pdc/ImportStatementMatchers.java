@@ -1,5 +1,6 @@
 package com.robusta.pdc;
 
+import com.robusta.pdc.domain.ImportStatement;
 import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 

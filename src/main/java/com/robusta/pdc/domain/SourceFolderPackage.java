@@ -1,4 +1,4 @@
-package com.robusta.pdc;
+package com.robusta.pdc.domain;
 
 import java.io.File;
 import java.io.FilenameFilter;

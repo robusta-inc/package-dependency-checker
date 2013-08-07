@@ -1,4 +1,4 @@
-package com.robusta.pdc;
+package com.robusta.pdc.domain;
 
 public class ImportStatement {
     private final String statement;
@@ -9,8 +9,16 @@ public class ImportStatement {
         this.sourceFile = sourceFile;
     }
 
+    public JavaPackage importedPackage() {
+        return new JavaPackage(this);
+    }
+
     public String statement() {
         return statement;
+    }
+
+    public SourceFile sourceFile() {
+        return sourceFile;
     }
 
     @Override

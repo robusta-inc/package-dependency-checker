@@ -1,7 +1,7 @@
 package com.robusta.pdc.scanner;
 
-import com.robusta.pdc.ImportStatement;
-import com.robusta.pdc.SourceFile;
+import com.robusta.pdc.domain.ImportStatement;
+import com.robusta.pdc.domain.SourceFile;
 import org.hamcrest.generator.qdox.JavaDocBuilder;
 
 import java.io.IOException;

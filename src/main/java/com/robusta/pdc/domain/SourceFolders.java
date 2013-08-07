@@ -1,4 +1,4 @@
-package com.robusta.pdc;
+package com.robusta.pdc.domain;
 
 import com.google.common.base.Function;
 import com.google.common.base.Splitter;

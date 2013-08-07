@@ -1,4 +1,4 @@
-package com.robusta.pdc;
+package com.robusta.pdc.domain;
 
 import com.google.common.base.Splitter;
 
@@ -23,11 +23,15 @@ public class PackageNames implements Iterable<String> {
         return SPLIT_BY_COMMA_WITH_TRIM.split(commaSeperatedStringList);
     }
 
-    private static Iterable<String> checkValidity(Iterable<String> listOfPackageNames) {
+    private Iterable<String> checkValidity(Iterable<String> listOfPackageNames) {
         for (String packageName : listOfPackageNames) {
-            checkArgument(JAVA_PACKAGE_NAME_PATTERN.matcher(packageName).matches(), "The specified package: '%s' is not a valid package name", packageName);
+            checkArgument(supportedPackageNamePattern().matcher(packageName).matches(), "The specified package: '%s' is not a valid package name", packageName);
         }
         return listOfPackageNames;
+    }
+
+    protected Pattern supportedPackageNamePattern() {
+        return JAVA_PACKAGE_NAME_PATTERN;
     }
 
     private PackageNames(Iterable<String> packages) {

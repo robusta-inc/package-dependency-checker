@@ -1,8 +1,8 @@
 package com.robusta.pdc.scanner;
 
-import com.robusta.pdc.PackageNames;
-import com.robusta.pdc.SourceFolder;
-import com.robusta.pdc.SourceFolderPackage;
+import com.robusta.pdc.domain.PackageNames;
+import com.robusta.pdc.domain.SourceFolder;
+import com.robusta.pdc.domain.SourceFolderPackage;
 
 import java.util.Collection;
 

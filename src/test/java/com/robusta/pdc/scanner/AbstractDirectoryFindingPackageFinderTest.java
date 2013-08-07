@@ -1,8 +1,8 @@
 package com.robusta.pdc.scanner;
 
 import com.robusta.pdc.PackageNamesFixture;
-import com.robusta.pdc.SourceFolder;
-import com.robusta.pdc.SourceFolderPackage;
+import com.robusta.pdc.domain.SourceFolder;
+import com.robusta.pdc.domain.SourceFolderPackage;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

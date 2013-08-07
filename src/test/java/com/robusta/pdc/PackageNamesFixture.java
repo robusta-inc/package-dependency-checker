@@ -2,6 +2,7 @@ package com.robusta.pdc;
 
 
 import com.google.common.base.Joiner;
+import com.robusta.pdc.domain.*;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -25,5 +26,9 @@ public abstract class PackageNamesFixture {
         String absolutePath = new File(DIRECTORY_NAME_JOINER.join("src", "test", "resources", "var", "app", "code")).getAbsolutePath();
         LoggerFactory.getLogger(PackageNamesFixture.class).trace("absolutePath = " + absolutePath);
         return absolutePath;
+    }
+
+    public static String directoryName(String first, String second, String... rest) {
+        return DIRECTORY_NAME_JOINER.join(first, second, rest);
     }
 }

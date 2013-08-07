@@ -1,4 +1,4 @@
-package com.robusta.pdc;
+package com.robusta.pdc.domain;
 
 import java.io.File;
 
@@ -40,5 +40,14 @@ public class SourceFile {
 
     public File file() {
         return sourceFile;
+    }
+
+    public String javaFileNameInDotNotation() {
+        String filePath = sourceFile.getAbsolutePath();
+        String sourceFolderPath = sourceFolder.getAbsolutePath();
+        return filePath
+                .replace(sourceFolderPath, "")
+                .replace(File.separatorChar, '.')
+                .replaceFirst("^\\.", "");
     }
 }
