@@ -12,6 +12,17 @@ import static com.robusta.pdc.reporting.ReportingFactory.trackingVisitor;
 import static com.robusta.pdc.scanner.ScannerFactory.importStatementScanner;
 import static com.robusta.pdc.tracking.ImportTrackingFactory.violationTracking;
 
+/**
+ * Entry point into package-dependancy-checker (pdc)
+ * using command line. 
+ * 
+ * <p>Uses a Command line argument (CLA) parser to 
+ * process, validate and consume the CLA which is then
+ * passed into {@link PackageDependencyChecker}</p>
+ * 
+ * <p>Handles normal system exit and processing error 
+ * exits with appropriate return codes.
+ */
 public class Main {
     public static void main(String[] args) {
         bootstrap(args);
