@@ -47,11 +47,33 @@ public class Main {
         new LoggingInterceptor().interceptAndSetup(args);
     }
 
+    /**
+     * Package Dependecy checker. 
+     * 
+     * <p>Accepts a command line arguments with a 
+     * source folders, source packages and target 
+     * packages.</p>
+     * 
+     * <p>Uses the tracking factory to get a violation 
+     * (import dependancy in source file that is not in
+     * target packages supplied) kind of import tracker.
+     * </p>
+     * 
+     * <p>Sends the import tracker and the command line 
+     * arguments into the scanner factory to get a source
+     * folders scanner. Calls scan on the scanner</p>
+     * 
+     * <p>The results of the scanning operation is expected
+     * to be populated into the tracker, so send in a 
+     * reporting visitor into the tracker for visitation of 
+     * tracked contents</p>
+     * 
+     * <p>The tracking visitor implementation used currently
+     * outputs the dependency tracked information to standard
+     * output</p>
+     */
     public static class PackageDependencyChecker {
-        public PackageDependencyChecker() {
-        }
-
-        public void doWork(CommandLineArguments cla) throws ParseCommandLineArgumentHasFailed, UserHasAskedForHelp {
+       public void doWork(CommandLineArguments cla) throws ParseCommandLineArgumentHasFailed, UserHasAskedForHelp {
             ImportTracking tracking = violationTracking(cla.allowedPackages());
             importStatementScanner(tracking).scan(cla.sourceFolders(), cla.packageNames());
             tracking.allowVisitor(trackingVisitor());
