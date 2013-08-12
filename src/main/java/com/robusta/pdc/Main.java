@@ -72,11 +72,23 @@ public class Main {
      * outputs the dependency tracked information to standard
      * output</p>
      */
-    public static class PackageDependencyChecker {
-       public void doWork(CommandLineArguments cla) {
+    static class PackageDependencyChecker {
+
+        private final ImportTracking.Visitor outputReporter;
+
+        private PackageDependencyChecker() {
+            this(trackingVisitor());
+        }
+
+        protected PackageDependencyChecker(ImportTracking.Visitor outputReporter) {
+            this.outputReporter = outputReporter;
+        }
+
+        public void doWork(CommandLineArguments cla) {
             ImportTracking tracking = violationTracking(cla.allowedPackages());
             importStatementScanner(tracking).scan(cla.sourceFolders(), cla.packageNames());
-            tracking.allowVisitor(trackingVisitor());
+
+            tracking.allowVisitor(outputReporter);
         }
     }
 
