@@ -73,7 +73,7 @@ public class Main {
      * output</p>
      */
     public static class PackageDependencyChecker {
-       public void doWork(CommandLineArguments cla) throws ParseCommandLineArgumentHasFailed, UserHasAskedForHelp {
+       public void doWork(CommandLineArguments cla) {
             ImportTracking tracking = violationTracking(cla.allowedPackages());
             importStatementScanner(tracking).scan(cla.sourceFolders(), cla.packageNames());
             tracking.allowVisitor(trackingVisitor());
