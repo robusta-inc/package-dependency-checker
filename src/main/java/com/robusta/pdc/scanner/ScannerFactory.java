@@ -46,14 +46,38 @@ public abstract class ScannerFactory {
         return new NonRecursivePackageFinder();
     }
 
+    /**
+     * Produces a {@link PackageCallback} instance that uses the given
+     * {@link SourceFileScanner} to scan the {@link com.robusta.pdc.domain.SourceFile}
+     * that are sent into the callback.
+     *
+     * @param sourceFileScanner SourceFileScanner
+     * @return PackageCallback
+     */
     public static PackageCallback sourceFileScanningPackageCallback(SourceFileScanner sourceFileScanner) {
         return new SourceFileScanningPackageCallback(sourceFileScanner);
     }
 
+    /**
+     * Produces a {@link SourceFileScanner} instance that uses the given
+     * {@link ImportStatementCallback} to scan the {@link com.robusta.pdc.domain.SourceFile}
+     * for import statements and each import statement is sent into the callback.
+     *
+     * @param callback ImportStatementCallback
+     * @return SourceFileScanner
+     */
     public static SourceFileScanner sourceFileScanner(ImportStatementCallback callback) {
         return new QDocSourceFileScanner(callback);
     }
 
+    /**
+     * Produces a dependency tracking {@link ImportStatementCallback} that sends
+     * each {@link com.robusta.pdc.domain.ImportStatement} being called back into the
+     * given {@link ImportTracking tracker}.
+     *
+     * @param dependencyTracker ImportTracking
+     * @return ImportStatementCallback
+     */
     public static ImportStatementCallback dependencyTrackingStatementCallback(ImportTracking dependencyTracker) {
         return new DependencyTrackingImportStatementCallback(dependencyTracker);
     }
