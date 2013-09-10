@@ -30,7 +30,7 @@ public class AllowedPackages extends PackageNames {
      *
      * <p>com.bar.test.* becomes com\\.bar\\.test.*</p>
      *
-     * @return Iterable
+     * @return Iterator
      */
     @Override
     public Iterator<String> iterator() {
@@ -67,7 +67,7 @@ public class AllowedPackages extends PackageNames {
                 return true;
             }
         }
-        logger.debug("The package: '{}' was not allowed, (did not match any allowed pattern", packageInDotNotation);
+        logger.debug("The package: '{}' was not allowed, (did not match any allowed pattern)", packageInDotNotation);
         return false;
     }
 }
